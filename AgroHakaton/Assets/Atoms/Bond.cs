@@ -6,6 +6,16 @@ public class Bond : MonoBehaviour
     public Atom EndAtom { get; private set; }
     public int BondOrder { get; private set; } = 1;
 
+    public bool IsAromatic { get {
+            return BondOrder == 2 &&
+               StartAtom != null &&
+               EndAtom != null &&
+               StartAtom.Symbol == "C" &&
+               EndAtom.Symbol == "C";
+        } set {
+            IsAromatic = value;
+        } 
+    }
     private LineRenderer _lineRenderer;
     private bool _isInitialized;
 
@@ -211,6 +221,28 @@ public class Bond : MonoBehaviour
         if (EndAtom != null) EndAtom.RemoveBond(this);
         Destroy(gameObject);
     }
+
+    public void SetAromaticMaterial(Material material)
+    {
+        // Применяем материал ко всем линиям связи
+        foreach (Transform child in transform)
+        {
+            LineRenderer lr = child.GetComponent<LineRenderer>();
+            if (lr != null)
+            {
+                lr.material = material;
+            }
+        }
+    }
+    /*public bool IsAromatic()
+    {
+        // Для упрощения считаем все связи в 6-членных циклах ароматическими
+        return BondOrder == 2 &&
+               StartAtom != null &&
+               EndAtom != null &&
+               StartAtom.Symbol == "C" &&
+               EndAtom.Symbol == "C";
+    }*/
 
     private void Update()
     {

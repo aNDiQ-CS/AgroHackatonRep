@@ -90,7 +90,7 @@ public class BondCreator : MonoBehaviour
                 }
                 else
                 {
-                    CreateAtomAtPosition(hit.point);
+                    //CreateAtomAtPosition(hit.point);
                 }
             }
         }

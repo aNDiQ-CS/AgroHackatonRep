@@ -82,11 +82,11 @@ public class AtomDragger : MonoBehaviour
             if (atom == _draggedAtom) continue;
 
             float distance = Vector3.Distance(_draggedAtom.transform.position, atom.transform.position);
-            if (distance < minDistance && distance < 1.2f) // Максимальное расстояние для связи
+            /*if (distance < minDistance && distance < 1.2f) // Максимальное расстояние для связи
             {
                 minDistance = distance;
                 nearestAtom = atom;
-            }
+            }*/
         }
 
         // Создаем связь, если возможно
