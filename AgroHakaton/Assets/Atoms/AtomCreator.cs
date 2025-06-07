@@ -53,6 +53,7 @@ public class AtomCreator : MonoBehaviour
 
     private void CreateAtomAtPosition(Vector3 position)
     {
+        position = new Vector3(position.x, position.y, 0);
         AtomPrefab prefabInfo = atomPrefabs.Find(p => p.type == currentAtomType);
         if (prefabInfo == null) return;
 
